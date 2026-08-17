@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import AboutUs from './AboutUs';
 import ProductList from './ProductList';
+import CartItem from './CartItem';
 
 function App() {
   const [showProducts, setShowProducts] = useState(false);
@@ -21,6 +22,10 @@ function App() {
     setShowCart(true);
   };
 
+  const handleContinueShopping = () => {
+    setShowCart(false);
+  };
+
   return (
     <div className="App">
       {!showProducts ? (
@@ -32,9 +37,7 @@ function App() {
           </button>
         </div>
       ) : showCart ? (
-        <div>
-          <h2>Vista del Carrito (La construiremos en la Tarea 7)</h2>
-        </div>
+        <CartItem onContinueShopping={handleContinueShopping} />
       ) : (
         <ProductList 
           onHomeClick={handleHomeClick} 
